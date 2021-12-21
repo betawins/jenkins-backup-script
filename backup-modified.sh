@@ -33,6 +33,8 @@ function main() {
   tar -czvf "${TMP_TAR_NAME}" "${ARC_NAME}/"*
   cd -
   mv -f "${TMP_TAR_NAME}" "${DEST_FILE}"
+  # Delete older tar files
+  find $DEST_FILE* -mtime +5 -delete
   cleanup
   exit 0
 }
